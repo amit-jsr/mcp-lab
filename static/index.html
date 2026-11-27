@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f5bea" />
+<meta name="color-scheme" content="light dark" />
+<title>Notes</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f5bea'/%3E%3Cpath d='M9 10h14M9 16h14M9 22h8' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Auth screen -->
+  <section id="auth-view" class="auth hidden">
+    <div class="card">
+      <div class="logo" aria-hidden="true">&#9776;</div>
+      <h1>Notes</h1>
+      <p class="muted subtitle">Sign in to your workspace</p>
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-mode="login" role="tab" aria-selected="true">Login</button>
+        <button type="button" class="tab" data-mode="register" role="tab" aria-selected="false">Register</button>
+      </div>
+      <form id="auth-form">
+        <label>Email
+          <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+        </label>
+        <label>Password
+          <span class="pw">
+            <input type="password" name="password" id="password" required minlength="8" autocomplete="current-password" placeholder="At least 8 characters" />
+            <button type="button" id="toggle-pw" class="link" aria-label="Show password">Show</button>
+          </span>
+        </label>
+        <button type="submit" class="primary" id="auth-submit">Login</button>
+        <p id="auth-error" class="error" role="alert" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- App screen -->
+  <section id="app-view" class="hidden">
+    <header class="topbar">
+      <strong class="brand"><span class="dot" aria-hidden="true"></span>Notes</strong>
+      <div class="right">
+        <span id="user-email" class="muted"></span>
+        <button id="logout" class="ghost">Logout</button>
+      </div>
+    </header>
+    <main class="layout" id="layout">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <input id="search" type="search" placeholder="Search notes" aria-label="Search notes" />
+          <button id="new-note" class="primary">+ New</button>
+        </div>
+        <ul id="note-list" aria-label="Notes"></ul>
+      </aside>
+      <section class="editor">
+        <div id="empty" class="empty">
+          <div class="empty-icon" aria-hidden="true">&#9998;</div>
+          <p>Select a note or create a new one.</p>
+          <button type="button" class="primary" id="empty-new">Create a note</button>
+        </div>
+        <form id="editor-form" class="hidden">
+          <button type="button" id="back" class="ghost back">&larr; Notes</button>
+          <input id="title" placeholder="Title" aria-label="Title" required maxlength="200" />
+          <textarea id="body" placeholder="Write something…" aria-label="Note body"></textarea>
+          <div class="actions">
+            <span id="status" class="muted" aria-live="polite"></span>
+            <span id="count" class="muted"></span>
+            <button type="button" id="delete" class="danger">Delete</button>
+            <button type="submit" class="primary" id="save">Save</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </section>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
