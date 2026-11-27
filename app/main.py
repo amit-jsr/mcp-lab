@@ -27,7 +27,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title="Notes App", version="0.1.0", lifespan=lifespan)
+app = FastAPI(title="Notely", version="0.1.0", lifespan=lifespan)
 
 # Only needed if the UI is served from a different origin (e.g. a Vite dev server)
 app.add_middleware(

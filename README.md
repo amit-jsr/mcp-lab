@@ -1,4 +1,4 @@
-# Notes App (FastAPI + vanilla JS)
+# Notely (FastAPI + vanilla JS)
 
 A minimal full-stack site: UI, REST API, JWT auth, SQLite.
 
